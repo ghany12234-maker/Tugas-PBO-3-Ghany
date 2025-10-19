@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class HitungWaktuCetakNovel {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("--- Perhitungan Waktu Cetak Novel ---");
+
+        System.out.print("Masukkan banyaknya novel yang akan dicetak: ");
+        long jumlahNovel = input.nextLong();
+        
+        System.out.print("Masukkan tebal lembar per novel: ");
+        long tebalPerNovel = input.nextLong();
+        
+        input.close();
+
+        // Total lembar yang dicetak
+        long totalLembar = jumlahNovel * tebalPerNovel;
+        
+        // Total Waktu Cetak (dalam Detik) karena kecepatan 1 lembar/detik
+        long totalWaktuDetik = totalLembar; 
+
+        // Konversi Detik ke Hari, Jam, Menit, Detik
+        
+        // 1. Hitung Hari
+        long hari = totalWaktuDetik / 86400; 
+        long sisaDetik = totalWaktuDetik % 86400;
+        
+        // 2. Hitung Jam
+        long jam = sisaDetik / 3600;
+        sisaDetik = sisaDetik % 3600;
+        
+        // 3. Hitung Menit
+        long menit = sisaDetik / 60;
+        
+        // 4. Hitung Detik
+        long detik = sisaDetik % 60;
+
+        // Output Hasil
+        System.out.println("\n=============================================");
+        System.out.println("Total Lembar yang dicetak: " + totalLembar + " lembar");
+        System.out.println("Total Waktu Cetak (detik): " + totalWaktuDetik + " detik");
+        System.out.println("Waktu yang diperlukan untuk mencetak:");
+        System.out.printf("   %d hari, %d jam, %d menit, %d detik%n", 
+                          hari, jam, menit, detik);
+        System.out.println("=============================================");
+    }
+}
