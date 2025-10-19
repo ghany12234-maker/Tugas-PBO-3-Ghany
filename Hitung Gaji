@@ -1,0 +1,37 @@
+public class HitungGaji {
+    public static void main(String[] args) {
+        String nip = "240117001";
+        String nama = "John Doe";
+        String alamat = "Jl. Lorem Ipsum, Kecamatan Cianjur, Jawa Barat";
+        String jabatan = "Manajer";
+        
+        long gajiPokok = 2000000;      // P1
+        long tunjJabatan = 300000;     // P2
+        long tunjIstri = 200000;       // P3
+        long tunjAnak = 150000;        // P4
+        double persentasePajak = 0.10; // 10%
+
+        long totalGaji = gajiPokok + tunjJabatan + tunjIstri + tunjAnak;
+
+        long pajakPenghasilan = (long) (persentasePajak * totalGaji);
+
+        long gajiBersih = totalGaji - pajakPenghasilan;
+
+        System.out.println("====== Slip Gaji Pegawai ======");
+        System.out.println("Nomor Induk Karyawan: " + nip);
+        System.out.println("Nama Karyawan       : " + nama);
+        System.out.println("Alamat              : " + alamat);
+        System.out.println("Jabatan             : " + jabatan);
+        System.out.println("---------------------------------");
+        System.out.println("Gaji Pokok (P1)     : Rp " + gajiPokok);
+        System.out.println("Tunjangan Jabatan (P2): Rp " + tunjJabatan);
+        System.out.println("Tunjangan Istri (P3)  : Rp " + tunjIstri);
+        System.out.println("Tunjangan Anak (P4)   : Rp " + tunjAnak);
+        System.out.println("---------------------------------");
+        System.out.println("Total Gaji          : Rp " + totalGaji);
+        System.out.println("Pajak Penghasilan (10%): Rp " + pajakPenghasilan);
+        System.out.println("=================================");
+        System.out.println("Gaji Bersih         : Rp " + gajiBersih);
+        System.out.println("=================================");
+    }
+}
