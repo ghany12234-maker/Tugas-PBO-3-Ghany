@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class SelisihWaktu {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("--- Input Waktu Pertama (T1) ---");
+        System.out.print("Jam T1   : ");
+        int jam1 = input.nextInt();
+        System.out.print("Menit T1 : ");
+        int menit1 = input.nextInt();
+        System.out.print("Detik T1 : ");
+        int detik1 = input.nextInt();
+
+        System.out.println("\n--- Input Waktu Kedua (T2) ---");
+        System.out.print("Jam T2   : ");
+        int jam2 = input.nextInt();
+        System.out.print("Menit T2 : ");
+        int menit2 = input.nextInt();
+        System.out.print("Detik T2 : ");
+        int detik2 = input.nextInt();
+        
+        input.close();
+
+        long totalDetik1 = (long)jam1 * 3600 + (long)menit1 * 60 + detik1;
+        long totalDetik2 = (long)jam2 * 3600 + (long)menit2 * 60 + detik2;
+        
+        long selisihDetik = Math.abs(totalDetik1 - totalDetik2);
+
+        long selisihJam = selisihDetik / 3600;
+        long sisaDetik = selisihDetik % 3600;
+        long selisihMenit = sisaDetik / 60;
+        long selisihDetikAkhir = sisaDetik % 60;
+
+        System.out.println("\n==================================");
+        System.out.println("Selisih Waktu (dalam detik): " + selisihDetik + " detik");
+        System.out.printf("Selisih Waktu: %d jam, %d menit, %d detik%n", 
+                          selisihJam, selisihMenit, selisihDetikAkhir);
+        System.out.println("==================================");
+    }
+}
