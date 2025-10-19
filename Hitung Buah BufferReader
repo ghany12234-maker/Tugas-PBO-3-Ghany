@@ -1,0 +1,45 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class HitungBuahBR {
+    public static void main(String[] args) {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+
+        int manggaBeli = 0;
+        int jambuBeli = 0;
+        int manggaBusuk = 0;
+
+        try {
+            System.out.print("Masukkan jumlah buah Mangga yang dibeli (pcs): ");
+            manggaBeli = Integer.parseInt(br.readLine());
+
+            System.out.print("Masukkan jumlah buah Jambu yang diterima 1 tetangga (pcs): ");
+            int jambuPerTetangga = Integer.parseInt(br.readLine());
+            jambuBeli = jambuPerTetangga * 2; // Total jambu yang dibeli
+
+            System.out.print("Masukkan jumlah buah Mangga yang busuk (pcs): ");
+            manggaBusuk = Integer.parseInt(br.readLine());
+
+            // Perhitungan
+            int sisaMangga = manggaBeli - manggaBusuk;
+            int totalBuahDibeli = sisaMangga + jambuBeli;
+
+            // Output Hasil
+            System.out.println("\n====== Hasil Pembelian Buah ======");
+            System.out.println("Jumlah Mangga awal           : " + manggaBeli + " pcs");
+            System.out.println("Jumlah Jambu awal (2x10pcs)  : " + jambuBeli + " pcs");
+            System.out.println("Mangga Busuk (dikembalikan)  : " + manggaBusuk + " pcs");
+            System.out.println("----------------------------------");
+            System.out.println("Mangga bersih setelah kembali: " + sisaMangga + " pcs");
+            System.out.println("Total buah yang dibeli bersih: " + totalBuahDibeli + " pcs");
+            System.out.println("==================================");
+
+        } catch (IOException e) {
+            System.err.println("Error I/O: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.err.println("Input harus berupa angka.");
+        }
+    }
+}
