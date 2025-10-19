@@ -1,0 +1,49 @@
+//Contoh ClassScanner
+import java.util.Scanner;
+
+public class ContohScanner {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);la
+        
+        System.out.print("Masukkan nama Anda: ");
+        String nama = scanner.nextLine();
+        
+        System.out.print("Masukkan umur Anda: ");
+        int umur = scanner.nextInt();
+        
+        System.out.println("Halo, " + nama + "! Anda berusia " + umur + " tahun.");
+        
+        scanner.close();
+    }
+}
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+
+
+//Contoh Class BufferReader
+public class ContohBufferedReader {
+    public static void main(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        
+        try {
+            System.out.print("Masukkan nama Anda: ");
+            String nama = reader.readLine();
+            
+            System.out.print("Masukkan umur Anda: ");
+            int umur = Integer.parseInt(reader.readLine());
+            
+            System.out.println("Halo, " + nama + "! Anda berusia " + umur + " tahun.");
+        } catch (IOException e) {
+            System.out.println("Terjadi kesalahan saat membaca input.");
+        } finally {
+            try {
+              reader.close();
+            } catch (IOException e) {
+                System.out.println("Terjadi kesalahan saat menutup reader.");
+            }
+        }
+    }
+}
