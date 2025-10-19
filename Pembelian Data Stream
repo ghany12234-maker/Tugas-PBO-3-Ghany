@@ -1,0 +1,51 @@
+public class PembelianDataStream {
+    public static void main(String[] args) {
+        String nama = "Budi Santoso";
+        double totalBelanja = 500000.0;
+        double diskonPersen = 10.0; // 10%
+        double bayar = 550000.0;
+
+        double diskonNominal = totalBelanja * (diskonPersen / 100);
+        double totalSetelahDiskon = totalBelanja - diskonNominal;
+        double kembalian = bayar - totalSetelahDiskon;
+
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+             DataOutputStream dos = new DataOutputStream(baos)) {
+            
+            dos.writeUTF(nama); 
+            dos.writeDouble(totalBelanja);
+            dos.writeDouble(diskonPersen);
+            dos.writeDouble(totalSetelahDiskon);
+            dos.writeDouble(bayar);
+            dos.writeDouble(kembalian);
+            dos.flush();
+
+            byte[] dataBelanja = baos.toByteArray();
+            
+            try (ByteArrayInputStream bais = new ByteArrayInputStream(dataBelanja);
+                 DataInputStream dis = new DataInputStream(bais)) {
+                
+                String namaBaca = dis.readUTF();
+                double totalBelanjaBaca = dis.readDouble();
+                double diskonBaca = dis.readDouble();
+                double totalBaca = dis.readDouble();
+                double bayarBaca = dis.readDouble();
+                double kembalianBaca = dis.readDouble();
+
+                System.out.println("====== Bukti Pembelian (via DataStream) ======");
+                System.out.println("Nama Pelanggan  : " + namaBaca);
+                System.out.println("Total Belanja   : " + totalBelanjaBaca);
+                System.out.println("Diskon (%)      : " + diskonBaca + "%");
+                System.out.println("----------------------------------------------");
+                System.out.println("Total Bayar     : " + totalBaca);
+                System.out.println("Bayar           : " + bayarBaca);
+                System.out.println("Kembalian       : " + kembalianBaca);
+                System.out.println("==============================================");
+                
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
